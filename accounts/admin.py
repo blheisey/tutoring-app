@@ -11,11 +11,11 @@ class CustomUserAdmin(UserAdmin):
     list_display = [
         "email",
         "username",
-        "day",
+        "days",
         "hours",
     ]
-    fieldsets = UserAdmin.fieldsets + ((None, {"fields": ("day", "hours")}),)
-    add_fieldsets = UserAdmin.add_fieldsets + ((None, {"fields": ("day", "hours")}),)
+    fieldsets = UserAdmin.fieldsets + ((None, {"fields": ("day", "hours", "information")}),)
+    add_fieldsets = UserAdmin.add_fieldsets + ((None, {"fields": ("day", "hours", "information")}),)
 
 
 admin.site.register(TA, CustomUserAdmin)
