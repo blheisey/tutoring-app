@@ -1,6 +1,6 @@
 # accounts/views.py
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView
 from .forms import CustomUserCreationForm, EditHoursForm
@@ -20,3 +20,13 @@ class EditHoursView(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset=None):
         # Only allow the logged-in user to edit their own info
         return self.request.user
+
+class TAListView(ListView):
+    model = CustomUser
+    template_name = "home.html"
+    context_object_name = "tas"
+
+class TADetailView(DetailView):
+    model = CustomUser
+    template_name = "accounts/ta_detail.html"
+    context_object_name = "ta"

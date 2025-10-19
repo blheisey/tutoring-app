@@ -1,19 +1,41 @@
-<!-- templates/home.html -->
 {% extends "base.html" %}
-{% block title %}Home{% endblock title %}
+{% block title %}Tutoring Hours{% endblock title %}
 {% block content %}
-{% if user.is_authenticated %}
-<!-- new code here! -->
-<a href="{% url 'add_hours' %}">Add Hours</a>
-Hi {{ user.first_name }} {{ user.last_name }}! Your tutoring days and hours are {{ user.days }} and {{ user.hours }}. Your information is {{ user.information}}
-<!-- end of new code -->
-<form action="{% url 'logout' %}" method="post">
-{% csrf_token %}
-<button type="submit">Log Out</button>
-</form>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a> |
-<a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
+  <h2>CS Fishbowl Tutoring Hours</h2>
+
+  {% if tas %}
+    <ul>
+      {% for ta in tas %}
+        <li>
+          <a href="{% url 'ta_detail' ta.pk %}">
+            {{ ta.first_name }} {{ ta.last_name }}
+          </a>
+          — {{ ta.days }} — {{ ta.hours }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No TAs have signed up yet.</p>
+  {% endif %}
+
+  <hr>
+
+  {% if user.is_authenticated %}
+    <p>
+      Hi {{ user.first_name }} {{ user.last_name }}!<br>
+      Your tutoring days and hours are <strong>{{ user.days }}</strong> and <strong>{{ user.hours }}</strong>.<br>
+      Your information: {{ user.information }}
+    </p>
+
+    <a href="{% url 'add_hours' %}">Add / Edit Hours</a>
+
+    <form action="{% url 'logout' %}" method="post" style="margin-top: 10px;">
+      {% csrf_token %}
+      <button type="submit">Log Out</button>
+    </form>
+  {% else %}
+    <p>You are not logged in.</p>
+    <a href="{% url 'login' %}">Log In</a> |
+    <a href="{% url 'signup' %}">Sign Up</a>
+  {% endif %}
 {% endblock content %}

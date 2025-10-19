@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}TA Detail{% endblock title %}
+{% block content %}
+  <h2>{{ ta.first_name }} {{ ta.last_name }}</h2>
+  <p><strong>Information:</strong> {{ ta.information }}</p>
+
+  {% if ta.days or ta.hours %}
+    <p><strong>Availability:</strong> {{ ta.days }} — {{ ta.hours }}</p>
+  {% endif %}
+
+  <p><a href="{% url 'home' %}">Back to all TAs</a></p>
+{% endblock content %}

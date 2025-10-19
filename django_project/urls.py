@@ -19,12 +19,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include # new
 from django.views.generic.base import TemplateView # new
+from accounts.views import TAListView, TADetailView
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")), # new
     path("accounts/", include("django.contrib.auth.urls")), # new
-    path("", TemplateView.as_view(template_name="home.html"),
-    name="home"), # new
+    # path("", TemplateView.as_view(template_name="home.html"),
+    # name="home"), # new
+    path("", TAListView.as_view(), name="home"),
+    path("ta/<int:pk>/", TADetailView.as_view(), name="ta_detail"),
 ]
 
