@@ -4,6 +4,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <!-- new code here! -->
+<a href="{% url 'add_hours' %}">Add Hours</a>
 Hi {{ user.first_name }} {{ user.last_name }}! Your tutoring days and hours are {{ user.days }} and {{ user.hours }}. Your information is {{ user.information}}
 <!-- end of new code -->
 <form action="{% url 'logout' %}" method="post">
