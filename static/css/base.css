@@ -1,9 +1,11 @@
+
+
 body { 
 font-family: 'Source Sans Pro', sans-serif; 
-font-size: 18px;
+font-size: 10px;
  } 
 header { 
-border-bottom: 1px solid #999;  
+border-bottom: 1px solid #f00d0d;  
 margin-bottom: 2rem; 
 display: flex;
 }
@@ -69,4 +71,17 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #45a049;
+}
+
+
+
+#card-thing {
+  text-decoration: none;
+  color: #6a22c3;
+}
+
+
+.card {
+  background-image: linear-gradient(rgba(207, 207, 220, 0),rgb(215, 201, 201));
+
 }
