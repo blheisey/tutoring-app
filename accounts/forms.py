@@ -13,8 +13,26 @@ class CustomUserCreationForm(UserCreationForm):
             "days",
             "hours",
             "information",
-
         )
+        labels = {
+            "information": "What classes are you interested in tutoring?",
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Replace help texts with placeholders
+        self.fields['days'].widget.attrs.update({
+            'placeholder': 'Enter available days (e.g. Mon, Wed, Fri)',
+            'class': 'form-control',  # optional: Bootstrap styling
+        })
+        self.fields['hours'].widget.attrs.update({
+            'placeholder': 'Enter your available hours (e.g. 9am–1pm)',
+            'class': 'form-control',
+        })
+        self.fields['information'].widget.attrs.update({
+            'placeholder': 'cs-110, Web-App-Dev',
+            'class': 'form-control',
+        })
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
@@ -44,5 +62,9 @@ class EditHoursForm(forms.ModelForm):
         })
         self.fields['hours'].widget.attrs.update({
             'placeholder': 'Enter your available hours (e.g. 9am–1pm)',
+            'class': 'form-control',
+        })
+        self.fields['information'].widget.attrs.update({
+            'placeholder': 'cs-110, Web-App-Dev',
             'class': 'form-control',
         })

@@ -3,39 +3,54 @@
 {% block content %}
   <h2>CS Fishbowl Tutoring Hours</h2>
 
-  {% if tas %}
-    <ul>
-      {% for ta in tas %}
-        <li>
-          <a href="{% url 'ta_detail' ta.pk %}">
-            {{ ta.first_name }} {{ ta.last_name }}
-          </a>
-          — {{ ta.days }} — {{ ta.hours }}
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No TAs have signed up yet.</p>
-  {% endif %}
-
-  <hr>
-
-  {% if user.is_authenticated %}
+    {% if user.is_authenticated %}
     <p>
       Hi {{ user.first_name }} {{ user.last_name }}!<br>
       Your tutoring days and hours are <strong>{{ user.days }}</strong> and <strong>{{ user.hours }}</strong>.<br>
       Your information: {{ user.information }}
     </p>
 
-    <a href="{% url 'add_hours' %}">Add / Edit Hours</a>
-
-    <form action="{% url 'logout' %}" method="post" style="margin-top: 10px;">
-      {% csrf_token %}
-      <button type="submit">Log Out</button>
-    </form>
   {% else %}
     <p>You are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a> |
     <a href="{% url 'signup' %}">Sign Up</a>
   {% endif %}
+
+  {% if tas %}
+  
+      {% for ta in tas %}
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'ta_detail' ta.pk %}">
+            {{ ta.first_name }} {{ ta.last_name }}
+          </a></h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary"><p> 
+          {{ ta.days }} — {{ ta.hours }}</p></h6>
+          <p class="card-text"><p><strong>Information:</strong> {{ ta.information }}   <p> </p>
+          
+        </div>
+      </div>
+      
+      
+           
+      
+      {% endfor %}
+</div>
+ 
+  
+ 
+  {% else %}
+    <p>No TAs have signed up yet.</p>
+  {% endif %}
+
+  <hr>
+
+{% if user.is_authenticated %}
+  <form action="{% url 'logout' %}" method="post" style="margin-top: 10px;">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+      </form>
+{% endif %}
+
 {% endblock content %}
