@@ -13,6 +13,7 @@ class CustomUserCreationForm(UserCreationForm):
             "days",
             "hours",
             "information",
+
         )
 
 class CustomUserChangeForm(UserChangeForm):
