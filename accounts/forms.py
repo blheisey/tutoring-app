@@ -26,5 +26,5 @@ class CustomUserChangeForm(UserChangeForm):
 class EditHoursForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ["days", "hours"]
+        fields = ["days", "hours", "information"]
 
