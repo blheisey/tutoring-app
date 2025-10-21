@@ -12,4 +12,4 @@ class TA(AbstractUser):
         blank=True,
         help_text="Example: 2–4 PM"
     )
-    information = models.TextField(blank=True, db_default= "Optional: Add info about yourself, including classes you'd be comfortable tutoring."  )
+    information = models.TextField(blank=True )
