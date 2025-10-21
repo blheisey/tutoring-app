@@ -1,4 +1,4 @@
-
+{% load static %}
 
 <!DOCTYPE html>
 <html>
@@ -6,10 +6,27 @@
     
 <meta charset="utf-8">
 <title>{% block title %}Newspaper App{% endblock title %}</title>
+<link rel="stylesheet" href="{% static 'CSS/mycss.css' %}">
 </head>
 <body>
 <main>
 {% block content %}
+
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400"  
+rel="stylesheet"> 
+        <link rel="stylesheet" href="{% static 'CSS/base.css' %}">
+    </head>
+    <body>
+        <header>
+            <div class="nav-left">
+                <h1><a href="{% url 'home' %}">Django blog</a></h1>
+            </div>
+            
+        </header>
+
+        <p>this is random text</p>
+
 {% endblock content %}
 </main>
 </body>
