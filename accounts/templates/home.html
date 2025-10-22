@@ -15,7 +15,7 @@
   {% if tas %}
   
       {% for ta in tas %}
-
+      {% if ta.first_name %}
       <div class="card" >
         <div class="card-body">
           <h5 class="card-title" ><a href="{% url 'ta_detail' ta.pk %}" id = "card-thing">
@@ -27,6 +27,7 @@
           
         </div>
       </div>
+      {% endif %}
       
       
            
