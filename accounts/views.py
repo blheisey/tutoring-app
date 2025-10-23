@@ -26,6 +26,11 @@ class TAListView(ListView):
     template_name = "home.html"
     context_object_name = "tas"
 
+    def get_queryset(self):
+        # Get all users except superusers
+        return CustomUser.objects.filter(is_superuser=False)
+
+
 class TADetailView(DetailView):
     model = CustomUser
     template_name = "accounts/ta_detail.html"
