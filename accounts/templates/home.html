@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Tutoring Hours{% endblock title %}
 {% block content %}
-  <h2>CS Fishbowl Tutoring Hours</h2>
+  <h2 style = "padding-left: 10px;">CS Fishbowl Tutoring Hours</h2>
 
     {% if user.is_authenticated %}
-    <p>
+    <p style = "padding-left: 10px;">
       Hi {{ user.first_name }} {{ user.last_name }}!<br>
       Your tutoring days and hours are <strong>{{ user.days }}</strong> and <strong>{{ user.hours }}</strong>.<br>
       Your information: {{ user.information }}

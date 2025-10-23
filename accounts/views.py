@@ -21,7 +21,7 @@ class EditHoursView(LoginRequiredMixin, UpdateView):
         # Only allow the logged-in user to edit their own info
         return self.request.user
 
-class TAListView(ListView):
+class TAListView(ListView): 
     model = CustomUser
     template_name = "home.html"
     context_object_name = "tas"
